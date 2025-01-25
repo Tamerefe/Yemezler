@@ -1,0 +1,33 @@
+<div class="col-md-6 row mt-2 store-item">
+    <div class="col-3 img-container" style="padding-bottom: 1rem;padding-top: 1rem;">
+        <img src="<%= img %>" class="card-img-top store-img rounded w-100" alt="">
+        <span class="store-item-icon">
+            <i class="fas fa-shopping-cart"></i>
+        </span>
+    </div>
+    <div class="col-9">
+        <div class="row col-13">
+            <div class="col-9">
+                <h4 id="store-item-name" class="menutext whiteline"><%= title %></h4>
+            </div>
+            <div class="col-3">
+                <h5 id="store-item-price" class="font-weight-bold"><%= price %><strong class="store-item-value"> $ </strong>
+                </h5>
+            </div>
+        </div>
+        <div>
+            <% for (let i = 0; i < Math.floor(rating); i++) { %>
+                <span class="fa fa-star text-warning"></span> <!-- Tam yıldız -->
+            <% } %>
+            
+            <% if (rating % 1 !== 0) { %>
+                <span class="fa fa-star-half-alt text-warning"></span> <!-- Yarım yıldız -->
+            <% } %>
+            
+            <% for (let i = Math.ceil(rating); i < 5; i++) { %>
+                <span class="fa fa-star-o text-warning"></span> <!-- Boş yıldız -->
+            <% } %>
+        </div>
+        <p class="gray"><%= description %></p>
+    </div>
+</div>

@@ -15,17 +15,9 @@ Yemezler is a fictional Turkish food company that celebrates the diverse and vib
 
 ## Technologies Used
 
-- **HTML5**
-- **CSS3**
-- **JavaScript**
+- **NodeJS**
 - **Bootstrap**
 - **jQuery**
-- **React**
-- **Tailwindcss**
-
-## How to Run
-
-To explore the Yemezler website concept, simply open the `index.html` file in your web browser.
 
 ## Credits
 

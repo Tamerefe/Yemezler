@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yemezler - Menu</title>
+    <link rel="stylesheet" href="/Coss.css">
+    <style>
+        @media (max-width: 768px) {
+            .container.mt-5 {
+                margin-top: 7rem !important;
+            }
+            .menu-title {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+            .card-img-top {
+                height: 180px;
+                object-fit: cover;
+            }
+        }
+        .menu-item-card {
+            transition: transform 0.3s ease;
+            height: 100%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .menu-item-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        .card-img-top {
+            height: 220px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <%- include('components/header') %>
+
+    <div class="container mt-5 pt-5">
+        <h1 class="text-center mb-4 menu-title">Our Menu</h1>
+        
+        <div class="row">
+            <div class="col-sm-12 col-md-6 mb-4">
+                <div class="card menu-item-card">
+                    <img src="/menu/menu1.jpg" class="card-img-top" alt="Menu Item" onerror="this.src='/photos/main/default.jpg'">
+                    <div class="card-body">
+                        <h5 class="card-title">Appetizers</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Meze Platter - 55 TL</li>
+                            <li class="list-group-item">Cheese Börek - 45 TL</li>
+                            <li class="list-group-item">Hummus - 35 TL</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-sm-12 col-md-6 mb-4">
+                <div class="card menu-item-card">
+                    <img src="/menu/menu2.jpg" class="card-img-top" alt="Menu Item" onerror="this.src='/photos/main/default.jpg'">
+                    <div class="card-body">
+                        <h5 class="card-title">Main Courses</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Grilled Lamb - 120 TL</li>
+                            <li class="list-group-item">Chicken Shish - 90 TL</li>
+                            <li class="list-group-item">Vegetable Casserole - 75 TL</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-sm-12 col-md-6 mb-4">
+                <div class="card menu-item-card">
+                    <img src="/menu/menu3.jpg" class="card-img-top" alt="Menu Item" onerror="this.src='/photos/main/default.jpg'">
+                    <div class="card-body">
+                        <h5 class="card-title">Desserts</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Baklava - 50 TL</li>
+                            <li class="list-group-item">Künefe - 55 TL</li>
+                            <li class="list-group-item">Sütlaç - 35 TL</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-sm-12 col-md-6 mb-4">
+                <div class="card menu-item-card">
+                    <img src="/menu/menu4.jpg" class="card-img-top" alt="Menu Item" onerror="this.src='/photos/main/default.jpg'">
+                    <div class="card-body">
+                        <h5 class="card-title">Beverages</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Turkish Tea - 15 TL</li>
+                            <li class="list-group-item">Ayran - 20 TL</li>
+                            <li class="list-group-item">Turkish Coffee - 25 TL</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('components/footer') %>
+    <script src="/Glass.js"></script>
+</body>
+</html> 

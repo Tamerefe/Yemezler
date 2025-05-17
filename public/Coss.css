@@ -37,26 +37,26 @@ nav{
 	font-family: 'Barlow', sans-serif;
 }
 
-.navvba.scrolledd{
+.navbar-main.scrolled{
 	display: none;
 }
 
-.textt{
+.text-small{
 	font-family: 'Barlow', sans-serif;
 	font-size: 1rem;
 }
 
-.texttt{
+.text-medium{
 	font-family: 'Acme', sans-serif;
 	font-size: 1.25rem;
 }
 
-.textttt{
+.text-large{
 	font-family: 'Roboto', sans-serif;
 	font-size: 2rem;
 }
 
-.texttttt{
+.text-heading{
 	font-family: 'Londrina Solid', cursive;
 	font-size: 4rem;
 	text-transform: uppercase;
@@ -64,12 +64,12 @@ nav{
 	color: #cc3528;
 }
 
-.textttttt{
+.text-subtitle{
 	font-family: 'IBM Plex Sans', sans-serif;
 	font-size: 1rem;
 	text-align:center;
 }
-.gcym{
+.hero-text{
 	font-family: 'Oswald', sans-serif;
 	font-size: 3rem;
 	margin-bottom: 0rem;
@@ -86,19 +86,19 @@ nav{
 	color: #66ff99;
 }
 
-.clock2{
+.clock-light{
 	letter-spacing: 5px;
 	color: #fff;
 }
 
-.cardp{
+.card-padding{
 	padding-right: 2rem;
 	padding-left: 2rem;
 	padding-bottom: 1.5rem;
 	padding-top: 1.5rem;
 }
 
-.cardclose{
+.card-transparent{
 	background-color: transparent; 
 	border: none;
 }
@@ -653,7 +653,7 @@ q {
 	margin-bottom: 0rem;
 }
 
-.footertext{
+.footer-heading{
 	font-family: 'Londrina Solid', cursive;
 	font-size: 2rem;
 	text-transform: uppercase;
@@ -661,20 +661,20 @@ q {
 	text-align: center;
 }
 
-.footerrtext{
+.footer-text{
 	font-family: 'Roboto', sans-serif;
 	margin-bottom: 0px;
 	text-align: left;
 }
 
-.footertextt{
+.footer-subtitle{
 	font-family: 'Roboto', sans-serif;
 	margin-bottom: 0.25rem;
 	text-align: left;
 	color: #666;
 }
 
-.footerdot {
+.footer-icon{
 	height: 3rem;
 	width: 3rem;
 	background-color: white;
@@ -686,9 +686,11 @@ q {
 	border: 2px solid #e3e3e3;
 }
 
-.footerdot:hover {
+.footer-icon:hover {
 	border: none;
 }
+
+/* Kept for backwards compatibility */.footerdot {	height: 3rem;	width: 3rem;	background-color: white;	border-radius: 50%;	display: inline-block;	margin-left: 0.5rem;	margin-right: 0.5rem;	overflow: hidden;	border: 2px solid #e3e3e3;}.footerdot:hover {	border: none;}
 
 									/* User End */
 
@@ -773,10 +775,7 @@ q {
 	left: 43.5%;
 }
 
-.gcymm{
-	bottom: 10rem;
-	right: 15%;
-}
+.hero-text-container{	bottom: 10rem;	right: 15%;}
 
 /*  */
 /* Add animation to "page content" */
@@ -1101,13 +1100,13 @@ q {
 	color: white;
 }
 
-.abouttext{
+.about-heading{
 	font-family: 'Roboto', sans-serif;
 	font-size: 6rem;
 	padding-top: 17rem;
 }
 
-.aboutext{
+.about-text{
 	font-family: 'Roboto', sans-serif;
 	font-size: 1.25rem;
 }

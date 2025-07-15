@@ -123,9 +123,7 @@ function openCity(evt, foodName) {
 }
 
 // Get the element with id="defaultOpen" and click on it
-if ($('#defaultOpen')[0]) {
-    $('#defaultOpen')[0].click();
-}
+$('#defaultOpen')[0].click();
 
 
 // Menu End
@@ -266,13 +264,13 @@ var countdownfunction = setInterval(function () {
 	var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
 	// Output the result in an element with id="demo"
-	var demoElem = document.getElementById("demo");
-	if (demoElem) {
-		demoElem.innerHTML = days + "g " + hours + "s " + minutes + "d " + seconds + "sn ";
-		if (distance < 0) {
-			clearInterval(countdownfunction);
-			demoElem.innerHTML = "Bitti";
-		}
+	document.getElementById("demo").innerHTML = days + "g " + hours + "s "
+		+ minutes + "d " + seconds + "sn ";
+
+	// If the count down is over, write some text 
+	if (distance < 0) {
+		clearInterval(countdownfunction);
+		document.getElementById("demo").innerHTML = "Bitti";
 	}
 }, 1000);
 
@@ -292,7 +290,6 @@ function showSlides(n) {
 	var i;
 	var slides = document.getElementsByClassName("mySlides");
 	var dots = document.getElementsByClassName("dott");
-	if (!slides.length || !dots.length) return; // Eğer hiç slide veya dot yoksa fonksiyonu bitir
 	if (n > slides.length) { slideIndex = 1 }
 	if (n < 1) { slideIndex = slides.length }
 	for (i = 0; i < slides.length; i++) {
@@ -339,24 +336,14 @@ function password(){
 
 var txt = password();
 let ci = 0;
-var btn = document.getElementById('buttontxt');
 
-if (btn) {
-    btn.addEventListener('click', function() {
-        btn.disabled = true; // Butonu devre dışı bırak
-        var target = document.getElementById("demooo");
-        target.innerHTML = ""; // Önce temizle
-        var i = 0;
-        function writeChar() {
-            if (i < txt.length) {
-                target.innerHTML += txt.charAt(i);
-                i++;
-                setTimeout(writeChar, 50); // Hızını buradan ayarlayabilirsin
-            }
-        }
-        writeChar();
-    }, { once: true });
-}
+$('#buttontxt').bind("click",function typeWriter() {
+	if (ci < txt.length) {
+		document.getElementById("demooo").innerHTML += txt.charAt(ci);
+		ci++;
+		setTimeout(typeWriter, 100);
+	}
+});
 
 
 // Son Güncelleme İle Password Generator Kullanılmıştır 3/26/21
@@ -411,15 +398,13 @@ if (btn) {
 
   const btn = document.getElementById("generate-btn");
 
-  if (btn) {
-    btn.addEventListener("click", function() {
-      let random = Math.floor(Math.random() * quotes.length);
-      console.log(random);
+  btn.addEventListener("click", function() {
+    let random = Math.floor(Math.random() * quotes.length);
+    console.log(random);
 
-      document.getElementById("quote").textContent = quotes[random].quote;
-      document.querySelector(".author").textContent = quotes[random].author;
-    });
-  }
+    document.getElementById("quote").textContent = quotes[random].quote;
+    document.querySelector(".author").textContent = quotes[random].author;
+  });
 })();
 
 //Random End
@@ -461,7 +446,7 @@ cartBtn.forEach(function(btn){
 
             const item = {};
 
-            item.img = `/menu/img/${partPath}`;
+            item.img = `Urunler${partPath}`;
 
             let name = event.target.parentElement.parentElement.nextElementSibling.children[0].children[0].textContent;
 
@@ -576,80 +561,65 @@ const counter = document.querySelector('.wrapper > .counter');
 let votes = 83;
 let voted = false;
 
-if (counter && voteEl) {
-    counter.innerHTML = votes;
+counter.innerHTML = votes;
 
-    voteEl.addEventListener('click', () => {
-        if (voted) {
-            removeVote();
-        } else {
-            addVote();
-        }
-    });
-}
+voteEl.addEventListener('click', () => {
+    if (voted) {
+      removeVote();
+    } else {
+      addVote();
+    }  
+});
 
 const addVote = () => {
-    if (counter) {
-        votes++;
-        counter.innerHTML = votes;
-        voted = true;
-    }
-};
+  votes = votes + 1;
+  counter.innerHTML = votes;
+  
+  voteEl.style.color = 'green';
+  
+  voted = true;
+}
 
 const removeVote = () => {
-    if (counter) {
-        votes--;
-        counter.innerHTML = votes;
-        voted = false;
-    }
-};
+  votes = votes - 1;
+  counter.innerHTML = votes;
+  
+  voteEl.style.color = '#aaa'
+  
+  voted = false;
+}
 
 const voteElx = document.querySelector('.wrapperx');
 const counterx = document.querySelector('.wrapperx > .counterx');
-let votesx = 83;
+let votesx = 71;
 let votedx = false;
 
-if (counterx && voteElx) {
-    counterx.innerHTML = votesx;
+counterx.innerHTML = votesx;
 
-    voteElx.addEventListener('click', () => {
-        if (votedx) {
-            removeVotex();
-        } else {
-            addVotex();
-        }
-    });
-}
+voteElx.addEventListener('click', () => {
+    if (votedx) {
+      removeVotex();
+    } else {
+      addVotex();
+    }  
+});
 
 const addVotex = () => {
-    if (counterx) {
-        votesx++;
-        counterx.innerHTML = votesx;
-        votedx = true;
-    }
-};
+  votesx = votesx + 1;
+  counterx.innerHTML = votesx;
+  
+  voteElx.style.color = 'green';
+  
+  votedx = true;
+}
 
 const removeVotex = () => {
-    if (counterx) {
-        votesx--;
-        counterx.innerHTML = votesx;
-        votedx = false;
-    }
-};
+  votesx = votesx - 1;
+  counterx.innerHTML = votesx;
+  
+  voteElx.style.color = '#aaa'
+  
+  votedx = false;
+}
 
 //Vote End
-
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('reservationForm');
-    if (form) {
-        // Set minimum date to today
-        const today = new Date().toISOString().split('T')[0];
-        document.getElementById('date').min = today;
-        // Form submission
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Teşekkürler! Rezervasyonunuz alınmıştır. Onay e-postası kısa süre içinde gönderilecektir.');
-            form.reset();
-        });
-    }
-});

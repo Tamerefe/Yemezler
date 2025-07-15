@@ -5,146 +5,303 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yemezler - Make a Reservation</title>
     <link rel="stylesheet" href="/Coss.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        
+        .container.mt-5 {
+            margin-top: 6rem !important;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .reservation-card {
+            box-shadow: var(--box-shadow);
+            border-radius: var(--border-radius);
+            border: none;
+            overflow: hidden;
+            background-color: white;
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.95);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .reservation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .card-header {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 0 !important;
+            padding: 1.5rem 2rem;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            z-index: 0;
+        }
+        
+        .card-header h3 {
+            font-weight: 600;
+            margin-bottom: 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .card-body {
+            padding: 2rem;
+        }
+        
+        .form-control {
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            border: 1px solid #e2e8f0;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .form-control:focus {
+            box-shadow: 0 0 0 3px rgba(255,107,53,0.2);
+            border-color: var(--primary-color);
+            background-color: white;
+        }
+        
+        .form-label {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .btn-submit {
+            background-color: var(--primary-color);
+            border: none;
+            padding: 1rem 2.5rem;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-submit::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 80%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .btn-submit:hover {
+            background-color: #e85a24;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,107,53,0.3);
+        }
+        
+        .btn-submit:hover::before {
+            opacity: 1;
+        }
+        
+        .policy-card {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: var(--border-radius);
+            border: none;
+            box-shadow: var(--box-shadow);
+            margin-top: 2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .policy-card:hover {
+            transform: translateY(-3px);
+        }
+        
+        .policy-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+        
+        .policy-header i {
+            color: var(--primary-color);
+            font-size: 1.25rem;
+            margin-right: 0.75rem;
+        }
+        
+        .policy-list {
+            padding-left: 1.75rem;
+            margin-bottom: 0;
+        }
+        
+        .policy-list li {
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        .policy-list li::before {
+            content: "•";
+            color: var(--primary-color);
+            font-weight: bold;
+            position: absolute;
+            left: -1.2rem;
+        }
+        
+        .input-icon-wrapper {
+            position: relative;
+        }
+        
+        .input-icon {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #adb5bd;
+        }
+        
         @media (max-width: 768px) {
             .container.mt-5 {
-                margin-top: 7rem !important;
+                margin-top: 5rem !important;
+                padding-left: 1rem;
+                padding-right: 1rem;
             }
-            .reservation-card {
-                border-radius: 0.5rem;
+            
+            .card-body {
+                padding: 1.5rem;
             }
-            .policy-list li {
-                margin-bottom: 0.75rem;
-            }
-        }
-        .reservation-card {
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            border: none;
-        }
-        .reservation-card:hover {
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-        .card-header {
-            border-radius: 0.5rem 0.5rem 0 0 !important;
-        }
-        .form-control:focus {
-            box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
-            border-color: #80bdff;
-        }
-        .btn-submit {
-            transition: all 0.3s ease;
-            padding: 0.75rem 2.5rem;
-        }
-        .btn-submit:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        .policy-card {
-            background-color: #f8f9fa;
-            border-left: 4px solid #007bff;
-        }
-        .policy-list {
-            padding-left: 1.25rem;
-        }
-        .policy-list li {
-            padding: 0.4rem 0;
         }
     </style>
 </head>
-<body>
+<body class="bg-reservation">
     <%- include('components/header') %>
 
-    <div class="container mt-5 pt-5">
-        <div class="row">
-            <div class="col-lg-8 col-md-12 mx-auto">
+    <div class="container mt-5 pt-5 mb-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10 col-sm-12">
                 <div class="card reservation-card mb-4">
-                    <div class="card-header bg-primary text-white">
-                        <h3 class="mb-0">Make a Reservation</h3>
+                    <div class="card-header bg-primary">
+                        <h3><i class="fas fa-calendar-alt me-2"></i> Rezervasyon Yap</h3>
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form id="reservationForm">
                             <div class="row">
-                                <div class="col-md-6 col-sm-12 mb-3">
-                                    <label for="name">Full Name</label>
-                                    <input type="text" class="form-control" id="name" required>
+                                <div class="col-md-6 mb-4">
+                                    <label for="name" class="form-label">Ad Soyad *</label>
+                                    <div class="input-icon-wrapper">
+                                        <input type="text" class="form-control" id="name" placeholder="Ad Soyad" required>
+                                        <i class="fas fa-user input-icon"></i>
+                                    </div>
                                 </div>
                                 
-                                <div class="col-md-6 col-sm-12 mb-3">
-                                    <label for="phone">Phone Number</label>
-                                    <input type="tel" class="form-control" id="phone" required>
+                                <div class="col-md-6 mb-4">
+                                    <label for="phone" class="form-label">Telefon Numarası *</label>
+                                    <div class="input-icon-wrapper">
+                                        <input type="tel" class="form-control" id="phone" placeholder="Telefon Numaranız" required>
+                                        <i class="fas fa-phone input-icon"></i>
+                                    </div>
                                 </div>
                             </div>
                             
                             <div class="row">
-                                <div class="col-md-6 col-sm-12 mb-3">
-                                    <label for="email">Email</label>
-                                    <input type="email" class="form-control" id="email" required>
+                                <div class="col-md-6 mb-4">
+                                    <label for="email" class="form-label">Mail Adresiniz</label>
+                                    <div class="input-icon-wrapper">
+                                        <input type="email" class="form-control" id="email" placeholder="your.email@example.com" required>
+                                        <i class="fas fa-envelope input-icon"></i>
+                                    </div>
                                 </div>
                                 
-                                <div class="col-md-6 col-sm-12 mb-3">
-                                    <label for="guests">Number of Guests</label>
-                                    <select class="form-control" id="guests" required>
-                                        <option value="">Select</option>
-                                        <option value="1">1 Person</option>
-                                        <option value="2">2 People</option>
-                                        <option value="3">3 People</option>
-                                        <option value="4">4 People</option>
-                                        <option value="5">5 People</option>
-                                        <option value="6">6 People</option>
-                                        <option value="7+">7+ People</option>
-                                    </select>
+                                <div class="col-md-6 mb-4">
+                                    <label for="guests" class="form-label">Kişi Sayısı *</label>
+                                    <div class="input-icon-wrapper">
+                                        <select class="form-control" id="guests" required>
+                                            <option value="" disabled selected>Gelecek Kişi Sayısını Seçiniz</option>
+                                            <option value="1">1 Kişi</option>
+                                            <option value="2">2 Kişi</option>
+                                            <option value="3">3 Kişi</option>
+                                            <option value="4">4 Kişi</option>
+                                            <option value="5">5 Kişi</option>
+                                            <option value="6">6 Kişi</option>
+                                            <option value="7+">7+ Kişi</option>
+                                        </select>
+                                        <i class="fas fa-users input-icon"></i>
+                                    </div>
                                 </div>
                             </div>
                             
                             <div class="row">
-                                <div class="col-md-6 col-sm-12 mb-3">
-                                    <label for="date">Date</label>
-                                    <input type="date" class="form-control" id="date" required>
+                                <div class="col-md-6 mb-4">
+                                    <label for="date" class="form-label">Rezervasyon Günü</label>
+                                    <div class="input-icon-wrapper">
+                                        <input type="date" class="form-control" id="date" required>
+                                        <i class="far fa-calendar input-icon"></i>
+                                    </div>
                                 </div>
                                 
-                                <div class="col-md-6 col-sm-12 mb-3">
-                                    <label for="time">Time</label>
-                                    <select class="form-control" id="time" required>
-                                        <option value="">Select</option>
-                                        <option>12:00 PM</option>
-                                        <option>12:30 PM</option>
-                                        <option>1:00 PM</option>
-                                        <option>1:30 PM</option>
-                                        <option>2:00 PM</option>
-                                        <option>2:30 PM</option>
-                                        <option>6:00 PM</option>
-                                        <option>6:30 PM</option>
-                                        <option>7:00 PM</option>
-                                        <option>7:30 PM</option>
-                                        <option>8:00 PM</option>
-                                        <option>8:30 PM</option>
-                                        <option>9:00 PM</option>
-                                    </select>
+                                <div class="col-md-6 mb-4">
+                                    <label for="time" class="form-label">Rezervasyon Saati</label>
+                                    <div class="input-icon-wrapper">
+                                        <select class="form-control" id="time" required>
+                                            <option value="" disabled selected>Saati Seçiniz</option>
+                                            <option>12:00</option>
+                                            <option>12:30</option>
+                                            <option>1:00</option>
+                                            <option>1:30</option>
+                                            <option>2:00</option>
+                                            <option>2:30</option>
+                                            <option>6:00</option>
+                                            <option>6:30</option>
+                                            <option>7:00</option>
+                                            <option>7:30</option>
+                                            <option>8:00</option>
+                                            <option>8:30</option>
+                                            <option>9:00</option>
+                                        </select>
+                                        <i class="far fa-clock input-icon"></i>
+                                    </div>
                                 </div>
                             </div>
                             
                             <div class="mb-4">
-                                <label for="special">Special Requests</label>
-                                <textarea class="form-control" id="special" rows="3"></textarea>
+                                <label for="special" class="form-label">Özel İsteğiniz</label>
+                                <textarea class="form-control" id="special" rows="3" placeholder="Herhangi bir özel isteğiniz var mı?"></textarea>
                             </div>
                             
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary btn-lg btn-submit">Submit Reservation</button>
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" class="btn btn-submit">
+                                    <i class="fas fa-check-circle me-2"></i>Rezervasyonu Onayla
+                                </button>
                             </div>
                         </form>
                     </div>
                 </div>
                 
-                <div class="card policy-card">
+                <div class="policy-card">
                     <div class="card-body">
-                        <h4>Reservation Policy</h4>
+                        <div class="policy-header">
+                            <i class="fas fa-info-circle"></i>
+                            <h4 class="mb-0">Reservation Kurallarımız</h4>
+                        </div>
                         <ul class="policy-list">
-                            <li>Reservations must be made at least 2 hours in advance</li>
-                            <li>For parties of 7 or more, please call us directly</li>
-                            <li>A confirmation email will be sent after your reservation is processed</li>
-                            <li>Please arrive on time; we can only hold your table for 15 minutes</li>
-                            <li>For cancellations, please notify us at least 2 hours before your reservation</li>
+                            <li>Rezervasyonlar en az 2 saat önceden yapılmalıdır</li>
+                            <li>7 veya daha fazla kişi için lütfen doğrudan bizi arayın</li>
+                            <li>Rezervasyonunuz onaylandıktan sonra size bir mail gönderilecektir</li>
+                            <li>Lütfen zamanında gelin; masanızı en fazla 30 dakika tutabiliriz</li>
+                            <li>İptaller için lütfen rezervasyon saatinden en az 2 saat önce bize bildirin</li>
                         </ul>
                     </div>
                 </div>
@@ -153,6 +310,17 @@
     </div>
 
     <%- include('components/footer') %>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>
     <script src="/Glass.js"></script>
 </body>
 </html> 

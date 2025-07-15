@@ -183,8 +183,11 @@ html {
 }
 
 .triangle {
-	width: 28rem;
-	height: 18rem;
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 10rem;
+	height: 10rem;
 	background-image: url(/main/bg.jpg);
 	clip-path: polygon(0% 0%, 0% 100%, 100% 0%)
 }
@@ -1138,6 +1141,7 @@ q {
     
     .navbar-brand {
         margin-right: 0;
+		
     }
     
     /* Fix menu spacing when collapsed */
@@ -1226,4 +1230,64 @@ q {
     input[type="checkbox"], input[type="radio"] {
         transform: scale(1.2);
     }
+}
+
+  .vs-card {
+  	cursor: pointer;
+  	border: 2px solid #e0e0e0;
+  	border-radius: 1.25rem;
+  	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  	transition: box-shadow 0.2s, border 0.2s, background 0.2s, color 0.2s;
+  	position: relative;
+  	min-height: 340px;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: center;
+  }
+
+  .vs-card:hover {
+  	box-shadow: 0 6px 24px rgba(40, 167, 69, 0.15);
+  	border: 2px solid #28a745;
+  }
+
+  .vs-card.selected {
+  	background: linear-gradient(135deg, #28a745 80%, #fff 100%);
+  	color: #fff !important;
+  	border: 2.5px solid #218838;
+  	box-shadow: 0 0 20px #28a74533;
+  }
+
+  .vs-card.selected h3,
+  .vs-card.selected h4,
+  .vs-card.selected .vs-card-icon {
+  	color: #fff !important;
+  }
+
+  .vs-card-icon {
+  	font-size: 2.5rem;
+  	color: #28a745;
+  	transition: color 0.2s;
+  }
+
+  .vs-card.selected .vs-card-icon {
+  	color: #fff;
+  }
+
+  @media (max-width: 767.98px) {
+  	.vs-card {
+  		min-height: 260px;
+  		padding: 1rem 0.5rem;
+  	}
+
+  	.vs-card-icon {
+  		font-size: 2rem;
+  	}
+  }
+
+.bg-reservation{
+	background-image: url(/pages/reservationbg.png);
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	position: relative;
 }

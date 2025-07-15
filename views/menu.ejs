@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yemezler - Menü</title>
+    <link rel="stylesheet" href="/Coss.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f8fafc 60%, #e0ffe0 100%);
+        }
+        .menu-category-bar {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+        .menu-category {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            background: #fff;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            transition: box-shadow 0.2s, background 0.2s;
+            min-width: 110px;
+        }
+        .menu-category.active, .menu-category:hover {
+            background: #28a745;
+            color: #fff;
+            box-shadow: 0 6px 24px rgba(40,167,69,0.15);
+        }
+        .menu-category i {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .menu-category span {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        .menu-section {
+            display: none;
+            animation: fadeEffect 0.7s;
+        }
+        .menu-section.active {
+            display: block;
+        }
+        @keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        .modern-menu-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        .modern-menu-card {
+            background: #fff;
+            border-radius: 1.5rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            padding: 1.5rem 1.2rem 1.2rem 1.2rem;
+            max-width: 340px;
+            min-width: 260px;
+            flex: 1 1 260px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2rem;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .modern-menu-card:hover {
+            box-shadow: 0 8px 32px rgba(40,167,69,0.15);
+            transform: translateY(-6px) scale(1.03);
+        }
+        .modern-menu-img {
+            width: 100%;
+            max-width: 220px;
+            height: 170px;
+            object-fit: cover;
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+            background: #f8fafc;
+        }
+        .modern-menu-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #222;
+            text-align: center;
+        }
+        .modern-menu-desc {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 0.7rem;
+            text-align: center;
+        }
+        .modern-menu-price {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #28a745;
+            margin-bottom: 0.7rem;
+        }
+        .modern-menu-rating {
+            margin-bottom: 0.7rem;
+        }
+        .modern-menu-add {
+            background: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 0.75rem;
+            padding: 0.6rem 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: background 0.2s, transform 0.2s;
+            cursor: pointer;
+        }
+        .modern-menu-add:hover {
+            background: #218838;
+            transform: scale(1.07);
+        }
+        @media (max-width: 900px) {
+            .modern-menu-row {
+                gap: 1rem;
+            }
+            .modern-menu-card {
+                min-width: 180px;
+                max-width: 100%;
+            }
+        }
+        @media (max-width: 600px) {
+            .menu-category-bar {
+                gap: 0.5rem;
+            }
+            .modern-menu-row {
+                flex-direction: column;
+                align-items: center;
+            }
+            .modern-menu-card {
+                width: 100%;
+                min-width: 0;
+                padding: 1rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<%- include('components/header') %>
+
+<div class="container mt-5 pt-5">
+    <h1 class="text-center mb-4 menu-title">Menümüz</h1>
+    <div class="menu-category-bar">
+        <div class="menu-category active" data-section="burger"><i class="fas fa-hamburger"></i><span>Burger</span></div>
+        <div class="menu-category" data-section="pizza"><i class="fas fa-pizza-slice"></i><span>Pizza</span></div>
+        <div class="menu-category" data-section="sandvic"><i class="fas fa-hotdog"></i><span>Sandviç</span></div>
+        <div class="menu-category" data-section="et"><i class="fas fa-drumstick-bite"></i><span>Izgara Et</span></div>
+        <div class="menu-category" data-section="tatli"><i class="fas fa-ice-cream"></i><span>Tatlı</span></div>
+        <div class="menu-category" data-section="atistirmalik"><i class="fas fa-cookie-bite"></i><span>Atıştırmalık</span></div>
+    </div>
+    <!-- Burger Section -->
+    <div class="menu-section active" id="burger">
+        <div class="modern-menu-row">
+            <%- include('components/menu', { title: "KLASİK BURGER" , price: "26 TL" , description: "150gr Dana Eti, marul, domates, soğan, turşu ve kızarmış patates ile beraber", img: "/menu/img/Klasik-burger.jpg", rating: 3.5 }) %>
+            <%- include('components/menu', { title: "LOKUM BURGER" , price: "43 TL" , description: "270 gr. Dilimlenmiş dana bonfile, cheddar peyniri, jerky sos, karamelize soğan ve kızarmış patates" , img: "/menu/img/Lokum-burger.jpg", rating: 4 }) %>
+            <%- include('components/menu', { title: "GURME BURGER" , price: "29 TL" , description: "150gr Dana Eti, karamelize soğan, kibrit patates, dana füme et, mantar, turşu, Dolliet sos, kıtır soğan", img: "/menu/img/Gurme-burger.jpg", rating: 4 }) %>
+            <%- include('components/menu', { title: "BBQ BURGER" , price: "28 TL" , description: "130 gr. Burger köftesi, halka dilim soğan, mayonez, BBQ sos, dana füme, göbek marul ve kızarmış patates" , img: "/menu/img/Bbq-burger.jpg", rating: 3 }) %>
+            <%- include('components/menu', { title: "CHEESEBURGER" , price: "25 TL" , description: "150gr Dana Eti, cheddar peyniri, karamelize soğan, çıtır patates, Center peynir sos ve kızarmış patates ile beraber", img: "/menu/img/Cheeseburger.png", rating: 3 }) %>
+            <%- include('components/menu', { title: "SUCUK BURGER" , price: "31 TL" , description: "Burger ekmeği, 120 gr. kasap sucuğu, hellim peyniri, marul, domates, turşu, cheddar peyniri, baharatlı patates" , img: "/menu/img/Sucuk-burger.jpg", rating: 4 }) %>
+            <%- include('components/menu', { title: "SMOKEHOUSE BURGER" , price: "33 TL" , description: "2 Kat 125gr Dana Eti, pastırma, cheddar peyniri, çıtır kaplamalı soğanlar, dana füme et, barbekü sos, sarımsaklı mayonez, kıtır soğan ve normal dilim patates ile beraber", img: "/menu/img/MexicanSmokehouse.png", rating: 4.5 }) %>
+            <%- include('components/menu', { title: "ISLAK BURGER" , price: "7 TL" , description: "50gr Dana Döş Eti, özel burger sosu" , img: "/menu/img/islakhamburger.jpg", rating: 2.5 }) %>
+        </div>
+    </div>
+    <!-- Pizza Section -->
+    <div class="menu-section" id="pizza">
+        <div class="modern-menu-row">
+            <%- include('components/menu', { title: "PIDE DE PIZZA (ORTA)" , price: "45 TL" , description: "Özel Sezar Sos, Mozzarella Peyniri, Pastırma, Küp Sucuk, Yeşil Biber, Siyah Zeytin", img: "/menu/img/pidedepizza.png", rating: 2.5 }) %>
+            <%- include('components/menu', { title: "TURKISH MIX (BÜYÜK)" , price: "68 TL" , description: "Özel Sezar Sos, Mozzarella Peyniri, Pastırma, Küp Sucuk, Mantar, Yeşil Biber, Domates" , img: "/menu/img/turkish mix.jpg", rating: 3.5 }) %>
+            <%- include('components/menu', { title: "ETİBOL (ORTA)" , price: "52 TL" , description: "Özel Sezar Sos, Mozzarella Peyniri, Jambon, Sosis, Küp Sucuk, Pastırma, Pepperoni, Soğan", img: "/menu/img/Etibol.png", rating: 4 }) %>
+            <%- include('components/menu', { title: "SUPREME (KÜÇÜK)" , price: "28 TL" , description: "Özel Sezar Sos, Mozzarella Peyniri, Küp Sucuk, Pepperoni, Mantar, Yeşil Biber, Soğan" , img: "/menu/img/supreme.png", rating: 3 }) %>
+            <%- include('components/menu', { title: "SanaBanaOna (ORTA)" , price: "44 TL" , description: "Sezar Sos, Sucuk Küp, Sosis, Jambon, Mantar, Mısır, Yeşil Biber, Siyah Zeytin, Parmesan, Baharat Karışımı", img: "/menu/img/SBO-urun.png", rating: 3.5 }) %>
+            <%- include('components/menu', { title: "ITALIANO (KÜÇÜK)" , price: "26 TL" , description: "Özel Sezar Sos, Mozzarella Peyniri, Küp Sucuk, Beyaz Peynir, Közlenmiş Kırmızı Biber, Siyah Zeytin, Mantar" , img: "/menu/img/caesarsitalyano.png", rating: 4 }) %>
+            <%- include('components/menu', { title: "KAVURMALI (BÜYÜK)" , price: "70 TL" , description: "Özel Cheddar Sos, Mozzarella Peyniri, Kavurma, Yeşil Biber, Közlenmiş Kırmızı Biber, Soğan", img: "/menu/img/kavurmalisezar.jpg", rating: 4.5 }) %>
+            <%- include('components/menu', { title: "ITALIANO (KÜÇÜK)" , price: "29 TL" , description: "Özel Sezar Sos, Mozzarella Peyniri, Beyaz Peynir, Mantar, Siyah Zeytin, Yeşil Biber, Domates, Kekik" , img: "/menu/img/akdeniz.jpg", rating: 2 }) %>
+        </div>
+    </div>
+    <!-- Sandviç Section -->
+    <div class="menu-section" id="sandvic">
+        <div class="modern-menu-row">
+            <%- include('components/menu', { title: "BAHARATLI (30 CM)" , price: "25 TL" , description: "Genova salamı, pepperoni, kaşar peyniri veya cheddar peyniri, seçeceğiniz baharat, sebzeler ve sos", img: "/menu/img/BaharatlıI.jpg", rating: 4 }) %>
+            <%- include('components/menu', { title: "KLARSİ SOSİSLİ" , price: "22 TL" , description: "Fümelendirilmiş kasap sosis, ketçap, mayonez, hardal, turşu, patates" , img: "/menu/img/hotdog.jpg", rating: 3 }) %>
+            <%- include('components/menu', { title: "ITALIAN B.M.T. (30 CM)" , price: "25 TL" , description: "Pepperoni, Genova salamı, hindi but jambon, kaşar peyniri veya cheddar peyniri, baharat, sebzeler ve sos", img: "/menu/img/Bmt.jpg", rating: 4 }) %>
+            <%- include('components/menu', { title: "DUBLE SOSİSLİ" , price: "31 TL" , description: "140 gr. özel kara fırın ekmeğine; 110 gr. sosis, turşu, patates, sos, ketçap, mayonez" , img: "/menu/img/hottordog.jpg", rating: 4 }) %>
+            <%- include('components/menu', { title: "YUMURTA ROASTBEEF" , price: "27 TL" , description: "Roastbeef, seçeceğiniz baharat, sebzeler, yumurtalar, peynir,turşu ve sos", img: "/menu/img/Yumurta.jpg", rating: 2 }) %>
+            <%- include('components/menu', { title: "KARIŞIK KUMRU" , price: "34 TL" , description: "100 gr. kasap sucuğu, 100 gr. kasap sosis, 200 gr. kaşar peyniri, salam, domates, turşu, patates kızartması" , img: "/menu/img/kumru-yeni.png", rating: 3.5 }) %>
+            <%- include('components/menu', { title: "KÖFTE TOST" , price: "23 TL" , description: "Köfte, patates, kaşar peyniri veya cheddar peyniri, seçeceğiniz sebzeler, sos ve baharatlar", img: "/menu/img/Patates.jpeg", rating: 4.5 }) %>
+            <%- include('components/menu', { title: "DÖNERLİ PATSO" , price: "20 TL" , description: "200 gr. kasap döner, patates" , img: "/menu/img/Patso.jpg", rating: 4 }) %>
+        </div>
+    </div>
+    <!-- Et Section -->
+    <div class="menu-section" id="et">
+        <div class="modern-menu-row">
+            <%- include('components/menu', { title: "KARIŞIK BİFTEK" , price: "34 TL" , description: "300 gr. biftek, karışık salata, meze, kızarmış ekmek, patates", img: "/menu/img/steakk.jpg", rating: 4.5 }) %>
+            <%- include('components/menu', { title: "KUZU ŞİŞ" , price: "23 TL" , description: "200gr. Kuzu şiş" , img: "/menu/img/Lampskewers.jpg", rating: 3.5 }) %>
+            <%- include('components/menu', { title: "SUCUK" , price: "22 TL" , description: "200 gr. mangal sucuk, kızarmış ekmek, patates", img: "/menu/img/Sausage.jpg", rating: 4 }) %>
+            <%- include('components/menu', { title: "TAVUK KANADI" , price: "40 TL" , description: "400 gr. Tavuk kanadı, özel soslar" , img: "/menu/img/Chickenwing.jpeg", rating: 4 }) %>
+            <%- include('components/menu', { title: "PIRZOLA" , price: "25 TL" , description: "180 Gr Pirzola. 3 Ad., Patates", img: "/menu/img/Lampchop.jpg", rating: 4 }) %>
+            <%- include('components/menu', { title: "KÖFTE PATATES" , price: "28 TL" , description: "200 gr. Köfte, patates, köz biber, köz domates, mevsim baharatları" , img: "/menu/img/Meatball.png", rating: 4 }) %>
+            <%- include('components/menu', { title: "KUZU ANTRİKOT" , price: "30 TL" , description: "200 gr. antrikot, çeşitli sebzeler, özel soslar", img: "/menu/img/Ribeye.jpg", rating: 4.5 }) %>
+            <%- include('components/menu', { title: "KARIŞIK KEBAP" , price: "66 TL" , description: "250gr Kuzu şiş, 200gr tavuk şiş, 150gr domatesli kebap, 300gr urfa kebap, 4 Ad Fındık lahmacun, Fındık kaşar, pilav, köz domates, köz biber, patates" , img: "/menu/img/mixedkebab.jpg", rating: 5 }) %>
+        </div>
+    </div>
+    <!-- Tatlı Section -->
+    <div class="menu-section" id="tatli">
+        <div class="modern-menu-row">
+            <%- include('components/menu', { title: "BAKLAVA" , price: "27 TL" , description: "250 Gr. Baklava, Toz şeker, içme suyu, buğday unu, sade, antep fıstık içi, buğday nişastası, yumurta", img: "/menu/img/Baklava.png", rating: 4 }) %>
+            <%- include('components/menu', { title: "TİRAMİSU" , price: "40 TL" , description: "500 gr. Kakao Ve Kahve ile süslenmiş tiramisu" , img: "/menu/img/Tiramisu.jpg", rating: 4 }) %>
+            <%- include('components/menu', { title: "GÜLLAÇ" , price: "32 TL" , description: "400 gr. nar ile süslenmiş antep fıstıklı güllaç", img: "/menu/img/Güllaç.jpg", rating: 5 }) %>
+            <%- include('components/menu', { title: "BİSKÜVİLİ PASTA" , price: "33 TL" , description: "600 gr. Bisküvi katmanlı pasta" , img: "/menu/img/Biscuitcake.jpg", rating: 3.5 }) %>
+            <%- include('components/menu', { title: "BEYAZ MOZAİK PASTA" , price: "25 TL" , description: "300gr. beyaz çikolata ile süslenmiş bitter çikolatalı mozaik pasta", img: "/menu/img/Mosaicake.jpg", rating: 4.5 }) %>
+            <%- include('components/menu', { title: "SUFLE" , price: "18 TL" , description: "1 Ad. Kap Dondurmalı Sufle" , img: "/menu/img/Sufle.jpg", rating: 4 }) %>
+            <%- include('components/menu', { title: "ZEBRA TATLISI" , price: "21 TL" , description: "200 gr. Pudingli bitter tatlı", img: "/menu/img/Zebra-tatlisi.png", rating: 4 }) %>
+            <%- include('components/menu', { title: "FIRIN SÜTLAÇ" , price: "15 TL" , description: "1 Ad. Fırınlanmış Çevizli Ve Antep Fıstıklı Sütlaç" , img: "/menu/img/Bakedricepudding.jpg", rating: 3.5 }) %>
+        </div>
+    </div>
+    <!-- Atıştırmalık Section -->
+    <div class="menu-section" id="atistirmalik">
+        <div class="modern-menu-row">
+            <%- include('components/menu', { title: "SOĞAN HALKASI" , price: "12 TL" , description: "16 Ad. Soğan Halkası Ketçap ile beraber", img: "/menu/img/Onionrings.jpg", rating: 4.5 }) %>
+            <%- include('components/menu', { title: "PARMAK TAVUK" , price: "14 TL" , description: "9 Ad. Parmak Tavuk" , img: "/menu/img/Chickentender.jpg", rating: 4.5 }) %>
+            <%- include('components/menu', { title: "MOZZARELLA STICK" , price: "15 TL" , description: "10 Ad. Mozzarrella Sticks", img: "/menu/img/Mozzarrellasticks.jpeg", rating: 4 }) %>
+            <%- include('components/menu', { title: "KURABİYE" , price: "8 TL" , description: "3 Ad. Çikolatalı Kurabiye" , img: "/menu/img/Chocolatechipcookies.jpg", rating: 3.5 }) %>
+            <%- include('components/menu', { title: "PATATES PÜRESİ" , price: "12 TL" , description: "Nane ile süslenmiş patates püresi", img: "/menu/img/MashPotatoSQ.jpg", rating: 3.5 }) %>
+            <%- include('components/menu', { title: "DALGANO KAHVESİ" , price: "7 TL" , description: "Dalgano Kahvesi" , img: "/menu/img/DalganoKahvesi.jpg", rating: 3.5 }) %>
+            <%- include('components/menu', { title: "TATLI PATATES" , price: "16 TL" , description: "Kajun Baharatlı Tatlı Patates", img: "/menu/img/Sweetpotato.jpg", rating: 4 }) %>
+            <%- include('components/menu', { title: "KAHVE PARTİSİ" , price: "30 TL" , description: "Americano, Flat White, Cappuccino, Macchiato, Espresso, Latte, Mocha" , img: "/menu/img/CoffeMix.jpg", rating: 3.5 }) %>
+        </div>
+    </div>
+</div>
+
+<%- include('components/footer') %>
+<script src="/Glass.js"></script>
+<script>
+// Kategori sekmeleri arası geçiş
+const categories = document.querySelectorAll('.menu-category');
+const sections = document.querySelectorAll('.menu-section');
+categories.forEach(cat => {
+    cat.addEventListener('click', function() {
+        categories.forEach(c => c.classList.remove('active'));
+        this.classList.add('active');
+        sections.forEach(sec => sec.classList.remove('active'));
+        document.getElementById(this.dataset.section).classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+});
+</script>
+</body>
+</html>
